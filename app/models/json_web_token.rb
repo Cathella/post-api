@@ -1,6 +1,6 @@
 class JsonWebToken
   def self.encode(check)
-    expire = 30.minutes.from_now.to_i
+    expire = 60.minutes.from_now.to_i
     JWT.encode check.merge(exp: expire), Rails.application.secrets.secret_key_base
   end
 

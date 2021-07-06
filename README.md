@@ -1,24 +1,84 @@
-# README
+# Posts API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Posts Api implementation that has three
+resources (User, Comments, Posts) relating via model associations.
+It has user authentication implemented using JSON Web Tokens.
 
-Things you may want to cover:
+## Project Features
 
-* Ruby version
+- User Authentication
+- RSpec Testing
+- API Versioning
+- JSON Web Tokens
 
-* System dependencies
+## How to run the project
 
-* Configuration
+Clone the project
 
-* Database creation
+```bash
+  git clone https://github.com/Cathella/post-api.git
+```
 
-* Database initialization
+Go to the project directory
 
-* How to run the test suite
+```bash
+  cd post-api
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Install gems
 
-* Deployment instructions
+```bash
+  bundle install
+```
 
-* ...
+Run migrations
+
+```bash
+  rails db:migrate
+```
+
+Generate a user
+
+```bash
+  rails db:seed
+```
+
+Start the server
+
+```bash
+  rails s
+```
+
+In the a new terminal tab, run a curl command to generate auth_token
+
+```bash
+  curl -v --data "user[email]=user@mail.com&user[password]=password" http://localhost:3000/api/v1/auth
+```
+
+Then,
+
+```bash
+  curl -v -H "Authorization: token {replace-with-generated-token}" http://localhost:3000/api/v1/posts
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  rails g rspec:install
+```
+
+Then,
+
+```bash
+  rspec
+```
+
+## Tech Stack
+
+**Server:** Ruby on Rails
+
+## Authors
+
+- [@catherine-nakitto](https://www.github.com/Cathella)
